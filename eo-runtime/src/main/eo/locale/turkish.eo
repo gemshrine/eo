@@ -1,0 +1,34 @@
+# Turkish locale with dotted and dotless I case mappings.
+
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package locale
++version 0.0.0
++spdx SPDX-FileCopyrightText: Copyright (c) 2016-2026 Objectionary.com
++spdx SPDX-License-Identifier: MIT
+
+[] > turkish
+  locale.low-cased > [text] > low-cased
+    string.replaced
+      string.replaced
+        text
+        string.regex "/I/"
+        "ı"
+      string.regex "/İ/"
+      "i"
+  locale.up-cased > [text] > up-cased
+    string.replaced
+      string.replaced
+        text
+        string.regex "/i/"
+        "İ"
+      string.regex "/ı/"
+      "I"
+
+  eq. ++> can-lower-case-dotted-and-dotless-i
+    "ıistanbul"
+    turkish.low-cased "IİSTANBUL"
+
+  eq. ++> can-upper-case-dotted-and-dotless-i
+    "İSTANBUL"
+    turkish.up-cased "istanbul"
